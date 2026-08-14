@@ -12,20 +12,33 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Android_226">
         <activity
-            android:name=".MainActivity"
+            android:name=".combinedactivity.SplashActivity"
             android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.Android_226"
-            android:windowSoftInputMode="adjustResize">
+            android:theme="@style/Theme.Android_226">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
+        <activity android:name=".combinedactivity.LoginActivity" />
+        <activity android:name=".combinedactivity.RegisterActivity" />
+        <activity android:name=".combinedactivity.ForgotPasswordActivity" />
+        <activity android:name=".combinedactivity.DashboardActivity" />
+        <activity android:name=".combinedactivity.DisposableEffectActivity" />
+        <activity android:name=".combinedactivity.LaunchedEffectActivity" />
+        <activity android:name=".combinedactivity.BottomSheetActivity" />
+        <activity android:name=".combinedactivity.DialogActivity" />
 
         <activity
-            android:name=".AlertDialog"
+            android:name=".classactivity1.MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Android_226">
+        </activity>
+
+
+        <activity
+            android:name=".dialogs.AlertDialogActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Android_226"
@@ -33,12 +46,14 @@
         </activity>
 
         <activity
-            android:name=".DialogBox"
+            android:name=".dialogs.DialogBoxActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Android_226"
             android:windowSoftInputMode="adjustResize">
         </activity>
+
+
 
 
     </application>
