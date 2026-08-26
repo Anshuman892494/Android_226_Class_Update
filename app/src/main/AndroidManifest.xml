@@ -74,6 +74,13 @@
             android:theme="@style/Theme.Android_226"
             android:windowSoftInputMode="adjustResize">
         </activity>
+        <activity
+            android:name=".coroutinebasics.StudentResultCalculate"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Android_226"
+            android:windowSoftInputMode="adjustResize">
+        </activity>
 
 
 
