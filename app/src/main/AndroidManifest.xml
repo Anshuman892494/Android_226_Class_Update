@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Android_226">
         <activity
-            android:name=".combinedactivity.SplashActivity"
+            android:name=".Unit_1.combinedactivity.SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.Android_226">
             <intent-filter>
@@ -21,14 +21,14 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".combinedactivity.LoginActivity" />
-        <activity android:name=".combinedactivity.RegisterActivity" />
-        <activity android:name=".combinedactivity.ForgotPasswordActivity" />
-        <activity android:name=".combinedactivity.DashboardActivity" />
-        <activity android:name=".combinedactivity.DisposableEffectActivity" />
-        <activity android:name=".combinedactivity.LaunchedEffectActivity" />
-        <activity android:name=".combinedactivity.BottomSheetActivity" />
-        <activity android:name=".combinedactivity.DialogActivity" />
+        <activity android:name=".Unit_1.combinedactivity.LoginActivity" />
+        <activity android:name=".Unit_1.combinedactivity.RegisterActivity" />
+        <activity android:name=".Unit_1.combinedactivity.ForgotPasswordActivity" />
+        <activity android:name=".Unit_1.combinedactivity.DashboardActivity" />
+        <activity android:name=".Unit_1.combinedactivity.DisposableEffectActivity" />
+        <activity android:name=".Unit_1.combinedactivity.LaunchedEffectActivity" />
+        <activity android:name=".Unit_1.combinedactivity.BottomSheetActivity" />
+        <activity android:name=".Unit_1.combinedactivity.DialogActivity" />
 
         <activity
             android:name=".classactivity1.MainActivity"
@@ -44,7 +44,7 @@
 
 
         <activity
-            android:name=".dialogs.AlertDialogActivity"
+            android:name=".Unit_1.dialogs.AlertDialogActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Android_226"
@@ -52,7 +52,7 @@
         </activity>
 
         <activity
-            android:name=".dialogs.DialogBoxActivity"
+            android:name=".Unit_1.dialogs.DialogBoxActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Android_226"
@@ -60,7 +60,7 @@
         </activity>
 
         <activity
-            android:name=".composeanimationapi.AnimationExample"
+            android:name=".Unit_1.composeanimationapi.AnimationExample"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Android_226"
@@ -68,14 +68,22 @@
         </activity>
 
         <activity
-            android:name=".coroutinebasics.CoroutineBasicsScreen"
+            android:name=".Unit_2.coroutinebasics.CoroutineBasicsScreen"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Android_226"
             android:windowSoftInputMode="adjustResize">
         </activity>
         <activity
-            android:name=".coroutinebasics.StudentResultCalculate"
+            android:name=".Unit_2.coroutinebasics.StudentResultCalculate"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Android_226"
+            android:windowSoftInputMode="adjustResize">
+        </activity>
+
+        <activity
+            android:name=".classactivity3.CoroutineDemo"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Android_226"
