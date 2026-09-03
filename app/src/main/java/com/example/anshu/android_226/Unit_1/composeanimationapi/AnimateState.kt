@@ -31,14 +31,14 @@ fun AnimationStateScreen() {
     var isExpanded by remember { mutableStateOf(false) }
 
     val backgroundColor by animateColorAsState(
-        targetValue = if (isExpanded) Color(0xFF6200EE) else Color(0xFF03DAC5),
-        animationSpec = tween(durationMillis = 500),
+        targetValue = if (!isExpanded) Color(0xFF6200EE) else Color(0xFF03DAC5),
+        animationSpec = tween(durationMillis = 2500),
         label = "ColorAnimation"
     )
 
     val boxSize by animateDpAsState(
         targetValue = if (isExpanded) 250.dp else 120.dp,
-        animationSpec = tween(durationMillis = 500),
+        animationSpec = tween(durationMillis = 1500),
         label = "SizeAnimation"
     )
 
@@ -51,8 +51,8 @@ fun AnimationStateScreen() {
             modifier = Modifier
                 .size(boxSize)
                 .clip(RoundedCornerShape(if (isExpanded) 24.dp else 8.dp))
-                .background(backgroundColor)
-                .clickable { isExpanded = !isExpanded },
+                .background(backgroundColor),
+//                .clickable { isExpanded = !isExpanded },
             contentAlignment = Alignment.Center
         ) {
             Text(

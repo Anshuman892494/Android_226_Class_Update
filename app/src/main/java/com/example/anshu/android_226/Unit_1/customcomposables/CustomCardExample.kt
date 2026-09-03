@@ -3,6 +3,10 @@ package com.example.anshu.android_226.Unit_1.customcomposables
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -30,17 +34,42 @@ fun SimpleCardScreen() {
                 )
             )
         },
+        bottomBar = {
+            NavigationBar(
+                containerColor = Color.White
+            ) {
+                NavigationBarItem(
+                    selected = true,
+                    onClick = { /* Empty onClick */ },
+                    icon = { Icon(Icons.Default.Home, contentDescription = "Home") },
+                    label = { Text("Home") }
+                )
+                NavigationBarItem(
+                    selected = false,
+                    onClick = { /* Empty onClick */ },
+                    icon = { Icon(Icons.Default.Info, contentDescription = "About") },
+                    label = { Text("About") }
+                )
+                NavigationBarItem(
+                    selected = false,
+                    onClick = { /* Empty onClick */ },
+                    icon = { Icon(Icons.Default.Person, contentDescription = "Profile") },
+                    label = { Text("Profile") }
+                )
+            }
+        },
         floatingActionButton = {
-            ExtendedFloatingActionButton(
+            FloatingActionButton(
                 onClick = { /* Submit logic */ },
                 containerColor = Color.Red,
                 contentColor = Color.White,
-                modifier = Modifier.fillMaxWidth(0.8f)
+                modifier = Modifier
+                    .padding(horizontal = 32.dp)
             ) {
-                Text("Submit", fontSize = 18.sp, fontWeight = FontWeight.Bold)
+                Text("+", fontSize = 18.sp, fontWeight = FontWeight.Bold)
             }
         },
-        floatingActionButtonPosition = FabPosition.Center
+        floatingActionButtonPosition = FabPosition.End
     ) { paddingValues ->
         LazyColumn(
             modifier = Modifier

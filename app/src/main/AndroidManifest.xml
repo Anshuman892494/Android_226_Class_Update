@@ -68,14 +68,14 @@
         </activity>
 
         <activity
-            android:name=".Unit_2.coroutinebasics.CoroutineBasicsScreen"
+            android:name=".Unit_2.coroutinebacis.CoroutineBasicsScreen"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Android_226"
             android:windowSoftInputMode="adjustResize">
         </activity>
         <activity
-            android:name=".Unit_2.coroutinebasics.StudentResultCalculate"
+            android:name=".Unit_2.coroutinebacis.StudentResultCalculate"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Android_226"
@@ -90,6 +90,21 @@
             android:windowSoftInputMode="adjustResize">
         </activity>
 
+        <activity
+            android:name=".Unit_2.structuredconcurrency.StructureConcurrency"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Android_226"
+            android:windowSoftInputMode="adjustResize">
+        </activity>
+
+        <activity
+            android:name=".classactivity4.StructureConcurrencyActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Android_226"
+            android:windowSoftInputMode="adjustResize">
+        </activity>
 
 
     </application>
