@@ -13,7 +13,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -38,67 +37,98 @@ class StructureConcurrencyActivity : ComponentActivity() {
     }
 }
 
+// Data Models
+data class Review(
+    val author: String,
+    val rating: Int,
+    val comment: String
+)
+
 data class Product(
     val name: String,
     val price: String,
     val img: Int,
-    val review: String
+    val description: String,
+    val reviews: List<Review>
 )
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ConcurrencyScreen() {
     var selectedProduct by remember { mutableStateOf<Product?>(null) }
 
-    val products = listOf(
-        Product("Wireless Headphones", "1999", R.drawable.wirelessheadphone, "Very Good"),
-        Product("Smart Watch", "2999", R.drawable.smartwatch, "Nice"),
-        Product("Bluetooth Speaker", "1499", R.drawable.bluespeaker, "Wonderfull")
+    val productList = listOf(
+        Product(
+            name = "Wireless Headphones",
+            price = "1999",
+            img = R.drawable.wirelessheadphone,
+            description = "Experience crystal-clear sound with active noise cancellation and ergonomic long-lasting comfort.",
+            reviews = listOf(
+                Review("Rahul", 5, "Very Good sound quality!"),
+                Review("Anita", 4, "Comfortable and clear bass.")
+            )
+        ),
+        Product(
+            name = "Smart Watch",
+            price = "2999",
+            img = R.drawable.smartwatch,
+            description = "Track your fitness, heart rate, and stay connected with notifications on the go with this sleek smartwatch.",
+            reviews = listOf(
+                Review("Vikas", 5, "Nice display and battery life."),
+                Review("Pooja", 4, "Step counter is very accurate.")
+            )
+        ),
+        Product(
+            name = "Bluetooth Speaker",
+            price = "1499",
+            img = R.drawable.bluespeaker,
+            description = "Powerful bass, portable design, and waterproof rating make this bluetooth speaker perfect for outdoor parties.",
+            reviews = listOf(
+                Review("Amit", 5, "Wonderful sound!"),
+                Review("Sneha", 5, "Loud and clear outdoors.")
+            )
+        )
     )
 
     if (selectedProduct == null) {
-        Scaffold(
-            topBar = {
-                CenterAlignedTopAppBar(
-                    title = { Text("Product List", fontWeight = FontWeight.Bold) },
-                    colors = TopAppBarDefaults.topAppBarColors(
-                        containerColor = Color(0xFFFF9800),
-                        titleContentColor = Color.White
-                    )
+        ProductListScreen(products = productList, onProductClick = { selectedProduct = it })
+    } else {
+        ProductDetailScreen(product = selectedProduct!!, onBackClick = { selectedProduct = null })
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ProductListScreen(products: List<Product>, onProductClick: (Product) -> Unit) {
+    Scaffold(
+        topBar = {
+            CenterAlignedTopAppBar(
+                title = { Text("Product List", fontWeight = FontWeight.Bold) },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = Color(0xFFFF9800),
+                    titleContentColor = Color.White
                 )
-            }
-        ) { paddingValues ->
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(paddingValues)
-                    .padding(horizontal = 16.dp)
-            ) {
-                items(products) { product ->
-                    ReusableProductCard(
-                        product = product,
-                        onClick = { selectedProduct = product }
-                    )
-                }
+            )
+        }
+    ) { paddingValues ->
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            items(products) { product ->
+                ProductItemCard(product = product, onClick = { onProductClick(product) })
             }
         }
-    } else {
-        ProductDetailScreen(
-            product = selectedProduct!!,
-            onBackClick = { selectedProduct = null }
-        )
     }
 }
 
 @Composable
-fun ReusableProductCard(
-    product: Product,
-    onClick: () -> Unit
-) {
+fun ProductItemCard(product: Product, onClick: () -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 8.dp)
             .clickable { onClick() },
         colors = CardDefaults.cardColors(containerColor = Color.White),
         elevation = CardDefaults.cardElevation(2.dp)
@@ -121,15 +151,132 @@ fun ReusableProductCard(
             Spacer(modifier = Modifier.width(16.dp))
 
             Column {
-                Text(
-                    text = product.name,
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.Bold
+                Text(text = product.name, fontSize = 18.sp, fontWeight = FontWeight.Bold)
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(text = "Price: ₹${product.price}", fontSize = 14.sp, color = Color.DarkGray)
+            }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ProductDetailScreen(product: Product, onBackClick: () -> Unit) {
+    var isSearching by remember { mutableStateOf(false) }
+
+    if (isSearching) {
+        SearchingScreen(onCancel = { isSearching = false })
+    } else {
+        Scaffold(
+            topBar = {
+                TopAppBar(
+                    title = { Text("Item Detail", fontWeight = FontWeight.Bold) },
+                    navigationIcon = {
+                        IconButton(onClick = onBackClick) {
+                            Icon(
+                                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                                contentDescription = "Back"
+                            )
+                        }
+                    },
+                    colors = TopAppBarDefaults.topAppBarColors(
+                        containerColor = Color(0xFFFF9800),
+                        titleContentColor = Color.White,
+                        navigationIconContentColor = Color.White
+                    )
                 )
-                Text(
-                    text = "Price: ₹${product.price}",
-                    fontSize = 16.sp,
-                    color = Color.DarkGray
+            }
+        ) { paddingValues ->
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(paddingValues)
+                    .padding(16.dp),
+                horizontalAlignment = Alignment.Start
+            ) {
+                // Product Image Centered
+                Image(
+                    painter = painterResource(id = product.img),
+                    contentDescription = product.name,
+                    modifier = Modifier
+                        .size(160.dp)
+                        .clip(CircleShape)
+                        .align(Alignment.CenterHorizontally),
+                    contentScale = ContentScale.Crop
+                )
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                // Left-aligned Text Information
+                Text(text = product.name, fontSize = 22.sp, fontWeight = FontWeight.Bold)
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(text = "Price: ₹${product.price}", fontSize = 18.sp, fontWeight = FontWeight.SemiBold, color = Color(0xFFFF9800))
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(text = product.description, fontSize = 14.sp, color = Color.DarkGray)
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                // Customer Review Section Card
+                Card(
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = CardDefaults.cardColors(containerColor = Color(0xFFFFF3E0)),
+                    shape = RoundedCornerShape(12.dp),
+                    elevation = CardDefaults.cardElevation(2.dp)
+                ) {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp)
+                    ) {
+                        Text(
+                            text = "Customer Review",
+                            fontSize = 18.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Color(0xFFE65100)
+                        )
+
+                        Spacer(modifier = Modifier.height(10.dp))
+
+                        product.reviews.forEach { review ->
+                            ReviewRow(review = review)
+                            Spacer(modifier = Modifier.height(8.dp))
+                        }
+                    }
+                }
+
+                // Push Load More button to the bottom
+                Spacer(modifier = Modifier.weight(1f))
+
+                Button(
+                    onClick = { isSearching = true },
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFE65100))
+                ) {
+                    Text(text = "Load More Review")
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun ReviewRow(review: Review) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Column(modifier = Modifier.weight(1f)) {
+            Text(text = review.author, fontSize = 15.sp, fontWeight = FontWeight.Bold, color = Color.DarkGray)
+            Text(text = review.comment, fontSize = 13.sp, color = Color.Gray)
+        }
+        Row {
+            repeat(review.rating) {
+                Icon(
+                    imageVector = Icons.Default.Star,
+                    contentDescription = "Star",
+                    tint = Color(0xFFFFC107),
+                    modifier = Modifier.size(14.dp)
                 )
             }
         }
@@ -138,119 +285,53 @@ fun ReusableProductCard(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ProductDetailScreen(
-    product: Product,
-    onBackClick: () -> Unit
-) {
+fun SearchingScreen(onCancel: () -> Unit) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Item Detail", fontWeight = FontWeight.Bold) },
-                navigationIcon = {
-                    IconButton(onClick = onBackClick) {
-                        Icon(
-                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = "Back"
-                        )
-                    }
-                },
+                title = { Text("Searching", fontWeight = FontWeight.Bold) },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = Color(0xFFFF9800),
-                    titleContentColor = Color.White,
-                    navigationIconContentColor = Color.White
+                    titleContentColor = Color.White
                 )
             )
         }
     ) { paddingValues ->
-        Column(
+        Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(paddingValues)
-                .padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+                .padding(paddingValues),
+            contentAlignment = Alignment.Center
         ) {
-            Spacer(modifier = Modifier.height(16.dp))
-
-            Image(
-                painter = painterResource(id = product.img),
-                contentDescription = product.name,
-                modifier = Modifier
-                    .size(180.dp)
-                    .clip(CircleShape),
-                contentScale = ContentScale.Crop
-            )
-
-            Spacer(modifier = Modifier.height(20.dp))
-
-            Text(
-                text = product.name,
-                fontSize = 24.sp,
-                fontWeight = FontWeight.Bold
-            )
-
-            Spacer(modifier = Modifier.height(8.dp))
-
-            Text(
-                text = "Price: ₹${product.price}",
-                fontSize = 20.sp,
-                fontWeight = FontWeight.SemiBold,
-                color = Color(0xFFFF9800)
-            )
-
-            Spacer(modifier = Modifier.height(24.dp))
-
-            // Styled Review Card
-            Card(
-                modifier = Modifier.fillMaxWidth(),
-                colors = CardDefaults.cardColors(
-                    containerColor = Color(0xFFFFF3E0)
-                ),
-                elevation = CardDefaults.cardElevation(2.dp),
-                shape = RoundedCornerShape(12.dp)
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
             ) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp)
-                ) {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Text(
-                            text = "Customer Review",
-                            fontSize = 20.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = Color(0xFFE65100)
-                        )
-                    }
-
-                    Spacer(modifier = Modifier.height(12.dp))
-
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Text(
-                            text = product.review,
-                            fontSize = 18.sp,
-                            fontWeight = FontWeight.Medium,
-                            color = Color.DarkGray
-                        )
-                    }
-                }
-            }
-
-            Spacer(modifier = Modifier.height(12.dp))
-
-            Button(
-                onClick = { /* Handle button click */ },
-                modifier = Modifier
-                    .fillMaxWidth(),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFFE65100)
+                CircularProgressIndicator(
+                    color = Color(0xFFFF9800),
+                    modifier = Modifier.size(56.dp)
                 )
 
-            ) {
-                Text("Load More Review")
+                Spacer(modifier = Modifier.height(16.dp))
+
+                Text(
+                    text = "Searching reviews...",
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Medium,
+                    color = Color.DarkGray
+                )
+
+                Spacer(modifier = Modifier.height(32.dp))
+
+                Button(
+                    onClick = onCancel,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 48.dp),
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFE65100))
+                ) {
+                    Text(text = "Cancel")
+                }
             }
         }
     }

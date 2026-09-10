@@ -30,7 +30,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.anshu.android_226.Unit_1.bottomsheet.BottomSheetExample
-import com.example.anshu.android_226.Unit_1.dialogs.DeleteDialogExample
+import com.example.anshu.android_226.Unit_1.dialogs.DeleteDialogScreen
 import com.example.anshu.android_226.Unit_1.dialogs.BookAppointmentScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -90,7 +90,7 @@ fun MainScreen() {
             ) {
                 Spacer(modifier = Modifier.height(20.dp))
                 BottomSheetExample()
-                DeleteDialogExample()
+                DeleteDialogScreen()
                 BookAppointmentScreen()
                 Spacer(modifier = Modifier.height(20.dp))
             }

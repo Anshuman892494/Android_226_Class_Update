@@ -43,13 +43,6 @@ fun SideEffectExample(){
     SideEffect {
         Log.d("SideEffect", "Counter is now ${counter.value}")
     }
-    Image(
-        painter = painterResource(id = R.drawable.img_2),
-        contentDescription = "App Logo",
-        modifier = Modifier
-            .fillMaxSize(),
-        contentScale = ContentScale.Crop
-    )
     Column(
         modifier = Modifier
             .fillMaxSize(),
@@ -58,7 +51,7 @@ fun SideEffectExample(){
     ){
         Text(
             text = "Counter Value",
-            color = Color.White,
+            color = Color.Red,
             fontWeight = FontWeight.ExtraBold,
             fontSize = 36.sp,
             modifier = Modifier.padding(24.dp)
@@ -66,7 +59,6 @@ fun SideEffectExample(){
         Box(
             modifier = Modifier
                 .size(180.dp)
-                .shadow(elevation = 16.dp, shape = CircleShape)
                 .clip(CircleShape)
                 .background(Color.Red.copy(alpha = 0.8f)),
             contentAlignment = Alignment.Center
