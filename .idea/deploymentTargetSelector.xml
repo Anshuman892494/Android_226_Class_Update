@@ -18,10 +18,6 @@
         <option name="selectionMode" value="DROPDOWN" />
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="AlertDialogActivity">
-        <option name="selectionMode" value="DROPDOWN" />
-        <DialogSelection />
-      </SelectionState>
       <SelectionState runConfigName="DialogBoxActivity">
         <option name="selectionMode" value="DROPDOWN" />
         <DialogSelection />
@@ -35,6 +31,10 @@
         <DialogSelection />
       </SelectionState>
       <SelectionState runConfigName="couroutineflow">
+        <option name="selectionMode" value="DROPDOWN" />
+        <DialogSelection />
+      </SelectionState>
+      <SelectionState runConfigName="Food_Delivery">
         <option name="selectionMode" value="DROPDOWN" />
         <DialogSelection />
       </SelectionState>
