@@ -18,10 +18,6 @@
         <option name="selectionMode" value="DROPDOWN" />
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="autosuggesttext">
-        <option name="selectionMode" value="DROPDOWN" />
-        <DialogSelection />
-      </SelectionState>
       <SelectionState runConfigName="mvvmpractice">
         <option name="selectionMode" value="DROPDOWN" />
         <DialogSelection />
@@ -35,6 +31,10 @@
         <DialogSelection />
       </SelectionState>
       <SelectionState runConfigName="LocationTrackingMVVM">
+        <option name="selectionMode" value="DROPDOWN" />
+        <DialogSelection />
+      </SelectionState>
+      <SelectionState runConfigName="ToDoListActivity">
         <option name="selectionMode" value="DROPDOWN" />
         <DialogSelection />
       </SelectionState>
