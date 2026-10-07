@@ -19,16 +19,13 @@ import kotlinx.coroutines.launch
 
 // 1. Simple ViewModel containing Flow
 class SimpleDownloadViewModel : ViewModel() {
-    
-    // StateFlow for Progress (0 to 100)
+
     private val _progress = MutableStateFlow(0)
     val progress: StateFlow<Int> = _progress.asStateFlow()
 
-    // StateFlow for Status text
     private val _status = MutableStateFlow("Tap the button to start download")
     val status: StateFlow<String> = _status.asStateFlow()
 
-    // Function to simulate file download using Flow
     fun startDownload() {
         viewModelScope.launch {
             _status.value = "Downloading..."

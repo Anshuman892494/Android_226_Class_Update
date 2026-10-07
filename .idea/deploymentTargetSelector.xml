@@ -18,23 +18,23 @@
         <option name="selectionMode" value="DROPDOWN" />
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="mvvmpractice">
+      <SelectionState runConfigName="MainActivity">
         <option name="selectionMode" value="DROPDOWN" />
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="NewsAPIActivity">
+      <SelectionState runConfigName="couroutineflow">
         <option name="selectionMode" value="DROPDOWN" />
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="mvvmpractice (1)">
+      <SelectionState runConfigName="couroutineflowcollection">
         <option name="selectionMode" value="DROPDOWN" />
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="LocationTrackingMVVM">
+      <SelectionState runConfigName="CoroutineDemo">
         <option name="selectionMode" value="DROPDOWN" />
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="ToDoListActivity">
+      <SelectionState runConfigName="LifeCycle">
         <option name="selectionMode" value="DROPDOWN" />
         <DialogSelection />
       </SelectionState>

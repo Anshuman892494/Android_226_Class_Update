@@ -35,7 +35,10 @@ fun StudentResult1Screen() {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterVertically)
         ) {
-            Text(text = status, style = MaterialTheme.typography.titleMedium)
+            Text(
+                text = status,
+                style = MaterialTheme.typography.titleMedium
+            )
             
             if (resultText.isNotEmpty()) {
                 Card(
@@ -101,7 +104,7 @@ fun StudentResult1Screen() {
 suspend fun connectToServer() {
     withContext(Dispatchers.IO) {
         delay(2000) // Simulating network lag
-        println("Server connected on: ${Thread.currentThread().name}")
+//        println("Server connected on: ${Thread.currentThread().name}")
     }
 }
 
@@ -112,14 +115,14 @@ suspend fun performCalculation(): Int {
         val science = 90
         val english = 78
         val total = maths + science + english
-        println("Calculation done on: ${Thread.currentThread().name}")
+//        println("Calculation done on: ${Thread.currentThread().name}")
         total
     }
 }
 suspend fun checkResult(): String {
     return withContext(Dispatchers.Main) {
         delay(1000) // Small delay
-        println("Result checked on: ${Thread.currentThread().name}")
+//        println("Result checked on: ${Thread.currentThread().name}")
         "Student Result: PASSED (Grade A)\nSubjects: Maths, Science, English"
     }
 }
