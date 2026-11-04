@@ -133,7 +133,7 @@
         </activity>
 
         <activity
-            android:name=".Unit_2.MVVM.mvvmpractice"
+            android:name=".Unit_3.MVVM.mvvmpractice"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Android_226"
@@ -141,7 +141,7 @@
         </activity>
 
         <activity
-            android:name=".Unit_2.MVVM.LocationTrackingMVVM"
+            android:name=".Unit_3.MVVM.LocationTrackingMVVM"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Android_226"
@@ -149,7 +149,7 @@
         </activity>
 
         <activity
-            android:name=".Unit_2.Food_Delivery"
+            android:name=".Unit_3.Food_Delivery"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Android_226"
@@ -180,6 +180,55 @@
             android:theme="@style/Theme.Android_226"
             android:windowSoftInputMode="adjustResize">
         </activity>
+
+        <activity
+            android:name=".CA2Activity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Android_226"
+            android:windowSoftInputMode="adjustResize">
+        </activity>
+
+        <activity
+            android:name=".Unit_4.roomdb"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Android_226"
+            android:windowSoftInputMode="adjustResize">
+        </activity>
+
+        <activity
+            android:name=".Unit_4.Activity8"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Android_226"
+            android:windowSoftInputMode="adjustResize">
+        </activity>
+        <activity
+            android:name=".Unit_4.CrudOperations.MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Android_226"
+            android:windowSoftInputMode="adjustResize">
+        </activity>
+
+        <activity
+            android:name=".Unit_4.RoomDatabaseActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Android_226"
+            android:windowSoftInputMode="adjustResize">
+        </activity>
+
+        <activity
+            android:name=".Unit_4.employee_management.EmployeeActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Android_226"
+            android:windowSoftInputMode="adjustResize">
+        </activity>
+
+
 
     </application>
 
