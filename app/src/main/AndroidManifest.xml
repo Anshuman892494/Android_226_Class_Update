@@ -228,8 +228,37 @@
             android:windowSoftInputMode="adjustResize">
         </activity>
 
+        <activity
+            android:name=".Unit_4.FlowRoomDB"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Android_226"
+            android:windowSoftInputMode="adjustResize">
+        </activity>
 
+        <activity
+            android:name=".Unit_4.OneToManyRoomDB"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Android_226"
+            android:windowSoftInputMode="adjustResize">
+        </activity>
 
+        <activity
+            android:name=".Unit_4.ManyToManyRoomDB"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Android_226"
+            android:windowSoftInputMode="adjustResize">
+        </activity>
+
+        <activity
+            android:name=".Unit_4.CRUDRoomDB"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Android_226"
+            android:windowSoftInputMode="adjustResize">
+        </activity>
     </application>
 
 </manifest>
